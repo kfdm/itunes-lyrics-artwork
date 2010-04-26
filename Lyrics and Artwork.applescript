@@ -1,4 +1,20 @@
-
+on notify(msg)
+	try
+		tell application "GrowlHelperApp"
+			register as application Â
+				"AppleScript" all notifications ["Message"] Â
+				default notifications ["Message"] Â
+				icon of application "Terminal"
+			notify with name Â
+				"Message" title Â
+				"Lyrics and Artwork" description msg Â
+				application name Â
+				"AppleScript" icon of application "iTunes"
+		end tell
+	on error
+		display dialog msg buttons {"Thanks"} default button 1 giving up after 15
+	end try
+end notify
 
 on find_playlist(playlistName)
 	tell application "iTunes"
@@ -45,7 +61,6 @@ tell application "iTunes"
 			end if
 		end timeout
 	end repeat
-	try
-		display dialog "Done" buttons {"Thanks"} default button 1 giving up after 15
-	end try
 end tell
+
+notify("Finished Processing Tracks")
