@@ -28,7 +28,7 @@ on find_playlist(playlistName)
 end find_playlist
 
 tell application "iTunes"
-	set the_playlist to playlist "Anime"
+	set the_playlist to playlist "Search"
 	set playlist_artwork to my find_playlist("Artwork")
 	set playlist_no_artwork to my find_playlist("No Artwork")
 	set playlist_lyrics to my find_playlist("Lyrics")
